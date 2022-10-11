@@ -1,22 +1,36 @@
 import styled from "styled-components";
-import QuizItem from "../QuizItem";
+import QuizzesList from "../QuizzesList";
 
-export default function HomeScreen({quizzesData}) {
+function isUserQuiz(id) {
+  for (let i = 0; i < localStorage.length; i++) {
+    if (localStorage.getItem(localStorage.key(i)) === String(id)) return true;
+  }
+  return false;
+}
+
+export default function HomeScreen({ quizzesData }) {
+  const userQuizzes = quizzesData.filter((quiz) => isUserQuiz(quiz.id));
+
   return (
     <MainStyle>
-      <MenuUserStyle>
-        <h2>
-          Você não criou nenhum
-          <br /> quizz ainda :(
-        </h2>
-        <div>Criar Quiz</div>
-      </MenuUserStyle>
-      <AllQuizzesStyle>
-        <h3>Todos os Quizes</h3>
-        <div>
-            {quizzesData.map((quiz) => <QuizItem key={quiz.id} title={quiz.title} image={quiz.image} />)}
-        </div>
-      </AllQuizzesStyle>
+      {userQuizzes.length === 0 ? (
+        <MenuUserStyle>
+          <h2>
+            Você não criou nenhum
+            <br /> quizz ainda :(
+          </h2>
+          <div>Criar Quiz</div>
+        </MenuUserStyle>
+      ) : (
+        <QuizzesList quizzesArray={userQuizzes}>
+          <h3>Seus Quizes</h3>
+          <ion-icon name="add-circle"></ion-icon>
+        </QuizzesList>
+      )}
+
+      <QuizzesList quizzesArray={quizzesData}>
+        <h3>Seus Quizes</h3>
+      </QuizzesList>
     </MainStyle>
   );
 }
@@ -58,25 +72,5 @@ const MenuUserStyle = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-`;
-
-const AllQuizzesStyle = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1.5vw;
-
-  h3 {
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 23px;
-  }
-
-  & > div {
-    width: 73vw;
-    display: flex;
-    flex-wrap: wrap;
-    overflow-y: auto;
-    gap: 1vw;
   }
 `;

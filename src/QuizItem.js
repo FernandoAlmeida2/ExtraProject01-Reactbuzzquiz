@@ -3,7 +3,7 @@ import styled from "styled-components";
 export default function QuizItem({image, title}) {
   return (
   <QuizStyle>
-    <img src={image} alt="quiz-image" />
+    <img src={image} alt={title} />
     <h1>{title}</h1>
   </QuizStyle>);
 }
@@ -38,3 +38,4 @@ const QuizStyle = styled.div`
     bottom: 0.8vw;
   }
 `;
+
