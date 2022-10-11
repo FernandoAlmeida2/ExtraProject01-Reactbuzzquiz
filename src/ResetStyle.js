@@ -33,6 +33,7 @@ const ResetStyle = createGlobalStyle`
     }
     body {
         line-height: 1;
+        background-color: #fafafa;
     }
     ol, ul {
         list-style: none;

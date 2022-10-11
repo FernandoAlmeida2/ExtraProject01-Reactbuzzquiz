@@ -9,12 +9,15 @@ export default function Header() {
 }
 
 const HeaderStyle = styled.header`
+  width: 100vw;
+  height: 5vw;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #ec362d;
-  height: 5vw;
-
+  z-index: 1;
+  position: fixed;
+  top: 0;
   h1 {
     color: #ffffff;
     font-weight: 700;
