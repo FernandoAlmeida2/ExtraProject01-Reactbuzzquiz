@@ -1,9 +1,13 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-export default function QuizItem({image, title}) {
+export default function QuizItem({image, title, id}) {
   return (
   <QuizStyle>
+    <Link to={`/Show-Quiz/${id}`} >
     <img src={image} alt={title} />
+    </Link>
+    
     <h1>{title}</h1>
   </QuizStyle>);
 }

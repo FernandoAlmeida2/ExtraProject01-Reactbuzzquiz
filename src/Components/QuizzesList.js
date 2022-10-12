@@ -7,7 +7,7 @@ export default function QuizzesList({ quizzesArray, children }) {
       <ChildrenStyle>{children}</ChildrenStyle>
       <Quizesdiv>
         {quizzesArray.map((quiz) => (
-          <QuizItem key={quiz.id} title={quiz.title} image={quiz.image} />
+          <QuizItem key={quiz.id} title={quiz.title} image={quiz.image} id={quiz.id} />
         ))}
       </Quizesdiv>
     </AllQuizzesStyle>

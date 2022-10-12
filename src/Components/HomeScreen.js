@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import QuizzesList from "../QuizzesList";
+import QuizzesList from "./QuizzesList";
 
 function isUserQuiz(id) {
   for (let i = 0; i < localStorage.length; i++) {
@@ -43,7 +43,7 @@ const MainStyle = styled.main`
   gap: 7vw;
 `;
 
-const MenuUserStyle = styled.div`
+const MenuUserStyle = styled.section`
   width: 73vw;
   height: 14vw;
   font-weight: 400;

@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomeScreen from "./Components/HomeScreen";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import ShowQuizScreen from "./Components/ShowQuizScreen";
 
 export default function App() {
   const [quizzesData, setQuizzes] = useState(null);
@@ -26,6 +27,7 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomeScreen quizzesData={quizzesData} />} />
+          <Route path="/Show-Quiz/:idQuiz" element={<ShowQuizScreen />} />
         </Routes>
       </BrowserRouter>
     </AppContainer>
