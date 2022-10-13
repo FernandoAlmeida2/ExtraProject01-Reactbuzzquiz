@@ -1,19 +1,54 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
-export default function CreateQuiz() {
-    function proceed(e){
-        e.preventDefault();
-        
-    }
+export default function CreateQuiz({ infoNewQuiz, setInfoNewQuiz, addQuestionsQuiz }) {
+  const navigate = useNavigate();
+  function proceed(e) {
+    e.preventDefault();
+    addQuestionsQuiz(infoNewQuiz.nQuestions);
+    navigate("/Create-Quiz-Questions");
+  }
+
+  function handleForm(e) {
+    setInfoNewQuiz({ ...infoNewQuiz, [e.target.name]: e.target.value });
+  }
+
   return (
     <CreateStyle>
       <h1>Comece pelo começo</h1>
       <form onSubmit={proceed}>
         <InputsStyle>
-          <input placeholder="Título do seu quiz" minlength="20" maxlength="65" required></input>
-          <input placeholder="URL da imagem do seu quiz" type="url" required></input>
-          <input placeholder="Quantidade de perguntas do quiz" type="number" min="3" required></input>
-          <input placeholder="Quantidade de níveis do quiz"  type="number" min="2" required></input>
+          <input
+            placeholder="Título do seu quiz"
+            minLength="20"
+            maxLength="65"
+            name="title"
+            value={infoNewQuiz.title}
+            onChange={handleForm}
+          ></input>
+          <input
+            placeholder="URL da imagem do seu quiz"
+            type="url"
+            name="image"
+            value={infoNewQuiz.image}
+            onChange={handleForm}
+          ></input>
+          <input
+            placeholder="Quantidade de perguntas do quiz"
+            type="number"
+            min="3"
+            name="nQuestions"
+            value={infoNewQuiz.nQuestions}
+            onChange={handleForm}
+          ></input>
+          <input
+            placeholder="Quantidade de níveis do quiz"
+            type="number"
+            min="2"
+            name="nLevels"
+            value={infoNewQuiz.nLevels}
+            onChange={handleForm}
+          ></input>
         </InputsStyle>
         <button type="submit">Prosseguir pra criar perguntas</button>
       </form>

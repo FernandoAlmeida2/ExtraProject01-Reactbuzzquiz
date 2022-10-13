@@ -20,7 +20,7 @@ export default function HomeScreen({ quizzesData }) {
             Você não criou nenhum
             <br /> quizz ainda :(
           </h2>
-          <NavLink to="/Create-Quiz-1">
+          <NavLink to="/Create-Quiz-Info">
             Criar Quiz
           </NavLink>
         </MenuUserStyle>
