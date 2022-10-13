@@ -6,6 +6,7 @@ import HomeScreen from "./Components/HomeScreen";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ShowQuizScreen from "./Components/ShowQuizScreen";
+import CreateQuiz from "./Components/CreateQuiz";
 
 export default function App() {
   const [quizzesData, setQuizzes] = useState(null);
@@ -28,6 +29,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomeScreen quizzesData={quizzesData} />} />
           <Route path="/Show-Quiz/:idQuiz" element={<ShowQuizScreen />} />
+          <Route path="/Create-Quiz-1" element={<CreateQuiz />} />
         </Routes>
       </BrowserRouter>
     </AppContainer>

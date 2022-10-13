@@ -33,6 +33,7 @@ const AllQuizzesStyle = styled.div`
         color: #EC362D;
         width: 2.5vw;
         height: 2.5vw;
+        cursor: pointer;
     }
   }
 `;

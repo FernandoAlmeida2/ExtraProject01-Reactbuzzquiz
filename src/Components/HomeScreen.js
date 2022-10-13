@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import QuizzesList from "./QuizzesList";
+import { Link } from "react-router-dom";
 
 function isUserQuiz(id) {
   for (let i = 0; i < localStorage.length; i++) {
@@ -19,12 +20,16 @@ export default function HomeScreen({ quizzesData }) {
             Você não criou nenhum
             <br /> quizz ainda :(
           </h2>
-          <div>Criar Quiz</div>
+          <NavLink to="/Create-Quiz-1">
+            Criar Quiz
+          </NavLink>
         </MenuUserStyle>
       ) : (
         <QuizzesList quizzesArray={userQuizzes}>
           <h3>Seus Quizes</h3>
-          <ion-icon name="add-circle"></ion-icon>
+          <Link to="/Create-Quiz-1">
+            <ion-icon name="add-circle"></ion-icon>
+          </Link>
         </QuizzesList>
       )}
 
@@ -53,6 +58,7 @@ const MenuUserStyle = styled.section`
   flex-direction: column;
   border: 1px dashed #d5d5d5;
   border-radius: 5px;
+  cursor: pointer;
 
   h2 {
     margin-top: 1vw;
@@ -61,16 +67,17 @@ const MenuUserStyle = styled.section`
     color: #b9b9b9;
     font-size: 20px;
   }
+`;
 
-  & > div {
-    color: #ec362d;
-    border: 1px dashed #ec362d;
-    border-radius: 50px;
-    font-size: 21px;
-    width: 10.5vw;
-    height: 3vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+const NavLink = styled(Link)`
+  color: #ec362d;
+  border: 1px dashed #ec362d;
+  border-radius: 50px;
+  font-size: 21px;
+  width: 10.5vw;
+  height: 3vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
 `;
