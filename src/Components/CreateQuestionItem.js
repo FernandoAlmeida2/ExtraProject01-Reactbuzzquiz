@@ -8,11 +8,15 @@ export default function CreateQuestionItem({
   questionsNewQuiz,
   setQuestions,
 }) {
-  function handleForm(e) {
-    setQuestions([
-      ...questionsNewQuiz,
-      { ...questionsNewQuiz[index], [e.target.name]: e.target.value },
-    ]);
+  function handleForm(e, indexAnswer) {
+    const newArray = [...questionsNewQuiz];
+    if (indexAnswer === -1){
+      newArray[index][e.target.name] = e.target.value;
+    } else{
+      newArray[index].answers[indexAnswer][e.target.name] = e.target.value;
+    }
+    setQuestions(newArray);
+
   }
 
   if (!isOpened) {
@@ -37,7 +41,7 @@ export default function CreateQuestionItem({
           minLength="20"
           value={questionsNewQuiz[index].title}
           name="title"
-          onChange={handleForm}
+          onChange={(e) => handleForm(e, -1)}
           required
         ></InputElement>
         <TextBox>
@@ -47,9 +51,9 @@ export default function CreateQuestionItem({
           <input
             type="color"
             id="questioncolor"
-            value={questionsNewQuiz[index].image}
-            name="image"
-            onChange={handleForm}
+            value={questionsNewQuiz[index].color}
+            name="color"
+            onChange={(e) => handleForm(e, -1)}
             required
           ></input>
         </TextBox>
@@ -59,7 +63,7 @@ export default function CreateQuestionItem({
           minLength="20"
           value={questionsNewQuiz[index].answers[0].text}
           name="text"
-          onChange={handleForm}
+          onChange={(e) => handleForm(e, 0)}
           required
         ></InputElement>
         <InputElement
@@ -67,7 +71,7 @@ export default function CreateQuestionItem({
           type="url"
           value={questionsNewQuiz[index].answers[0].image}
           name="image"
-          onChange={handleForm}
+          onChange={(e) => handleForm(e, 0)}
           required
         ></InputElement>
         <TextBox>Respostas incorretas</TextBox>
@@ -76,7 +80,7 @@ export default function CreateQuestionItem({
           minLength="1"
           value={questionsNewQuiz[index].answers[1].text}
           name="text"
-          onChange={handleForm}
+          onChange={(e) => handleForm(e, 1)}
           required
         ></InputElement>
         <InputElement
@@ -84,34 +88,34 @@ export default function CreateQuestionItem({
           minLength="1"
           value={questionsNewQuiz[index].answers[1].image}
           name="image"
-          onChange={handleForm}
+          onChange={(e) => handleForm(e, 1)}
           required
         ></InputElement>
         <InputElement
           placeholder="Resposta incorreta 2"
           value={questionsNewQuiz[index].answers[2].text}
           name="text"
-          onChange={handleForm}
+          onChange={(e) => handleForm(e, 2)}
         ></InputElement>
         <InputElement
           placeholder="URL da imagem 2"
           type="url"
           value={questionsNewQuiz[index].answers[2].image}
           name="image"
-          onChange={handleForm}
+          onChange={(e) => handleForm(e, 2)}
         ></InputElement>
         <InputElement
           placeholder="Resposta incorreta 3"
           value={questionsNewQuiz[index].answers[3].text}
           name="text"
-          onChange={handleForm}
+          onChange={(e) => handleForm(e, 3)}
         ></InputElement>
         <InputElement
           placeholder="URL da imagem 3"
           type="url"
           value={questionsNewQuiz[index].answers[3].image}
           name="image"
-          onChange={handleForm}
+          onChange={(e) => handleForm(e, 3)}
         ></InputElement>
       </InputsBox>
     </QuestionStyle>
