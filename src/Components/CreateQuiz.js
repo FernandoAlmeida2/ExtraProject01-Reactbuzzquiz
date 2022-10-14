@@ -1,11 +1,17 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-export default function CreateQuiz({ infoNewQuiz, setInfoNewQuiz, addQuestionsQuiz }) {
+export default function CreateQuiz({
+  infoNewQuiz,
+  setInfoNewQuiz,
+  addQuestionsQuiz,
+  addLevelsQuiz,
+}) {
   const navigate = useNavigate();
   function proceed(e) {
     e.preventDefault();
-    addQuestionsQuiz(infoNewQuiz.nQuestions);
+    addQuestionsQuiz();
+    addLevelsQuiz();
     navigate("/Create-Quiz-Questions");
   }
 

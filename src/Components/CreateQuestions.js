@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import CreateQuestionItem from "./CreateQuestionItem";
 import { useState} from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateQuestions({
   questionsNewQuiz,
@@ -9,9 +10,27 @@ export default function CreateQuestions({
 }) {
   const [indexOpened, setIndexOpened] = useState(0);
   const questionsComponent = [];
+  const navigate = useNavigate();
 
+  function cleanEmptyAnswers(){
+    const newArray = [...questionsNewQuiz];
+    newArray.forEach((question, i) => {
+      let q2Empty = false;
+      let q3Empty = false;
+      if(question.answers[3].text === "" || question.answers[3].image === "")
+        q3Empty = true;
+      if(question.answers[2].text === "" || question.answers[2].image === "")
+        q2Empty = true;
+      q3Empty && question.answers.pop();
+      q2Empty && question.answers.pop();
+    })
+    setQuestions(newArray);
+  }
+  
   function proceed(e) {
     e.preventDefault();
+    cleanEmptyAnswers();
+    navigate("/Create-Quiz-Levels");
   }
 
 
@@ -26,7 +45,6 @@ export default function CreateQuestions({
         setQuestions={setQuestions}
       />
     );
-    //questionsNewQuiz.length <= nQuestions &&
   }
   return (
     <QuestionsStyle>

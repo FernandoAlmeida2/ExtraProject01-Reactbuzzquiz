@@ -9,6 +9,8 @@ import ShowQuizScreen from "./Components/ShowQuizScreen";
 import CreateQuiz from "./Components/CreateQuiz";
 import CreateQuestions from "./Components/CreateQuestions";
 import questionBody from "./questionBody";
+import levelBody from "./levelBody";
+import CreateLevels from "./Components/CreateLevels";
 
 export default function App() {
   const [quizzesData, setQuizzes] = useState(null);
@@ -19,13 +21,25 @@ export default function App() {
     nLevels: "",
   });
   const [questionsNewQuiz, setQuestions] = useState([]);
-  
-  function addQuestionsQuiz(nQuestions){
-    const questionsArray = []
-    for (let i = 0; i < nQuestions; i++) {
-      questionsArray.push(questionBody);
+  const [levelsNewQuiz, setLevels] = useState([]);
+
+  function addQuestionsQuiz() {
+    const questionsArray = [];
+    for (let i = 0; i < infoNewQuiz.nQuestions; i++) {
+      const tempObj = questionBody.answers.map((answer) => {
+        return { ...answer };
+      });
+      questionsArray.push({ ...questionBody, answers: tempObj });
     }
     setQuestions(questionsArray);
+  }
+
+  function addLevelsQuiz() {
+    const levelsArray = [];
+    for (let i = 0; i < infoNewQuiz.nLevels; i++) {
+      levelsArray.push({ ...levelBody });
+    }
+    setLevels(levelsArray);
   }
 
   useEffect(() => {
@@ -54,6 +68,7 @@ export default function App() {
                 infoNewQuiz={infoNewQuiz}
                 setInfoNewQuiz={setInfoNewQuiz}
                 addQuestionsQuiz={addQuestionsQuiz}
+                addLevelsQuiz={addLevelsQuiz}
               />
             }
           />
@@ -64,6 +79,16 @@ export default function App() {
                 questionsNewQuiz={questionsNewQuiz}
                 setQuestions={setQuestions}
                 nQuestions={infoNewQuiz.nQuestions}
+              />
+            }
+          />
+          <Route
+            path="/Create-Quiz-Levels"
+            element={
+              <CreateLevels
+                levelsNewQuiz={levelsNewQuiz}
+                setLevels={setLevels}
+                nLevels={infoNewQuiz.nLevels}
               />
             }
           />
