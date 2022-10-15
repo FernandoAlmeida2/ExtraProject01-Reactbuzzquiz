@@ -40,8 +40,6 @@ export default function ShowQuizScreen() {
 
   function doIScrollIt(index) {
     if (index === 0) return true;
-    //if (index === quizData.questions.length - 1) return false;
-    //if(index < arrayClicked.length - 1) return false;
     if (arrayClicked.filter((el) => el === index - 1).length === 1) return true;
     return false;
   }

@@ -11,6 +11,7 @@ import CreateQuestions from "./Components/CreateQuestions";
 import questionBody from "./questionBody";
 import levelBody from "./levelBody";
 import CreateLevels from "./Components/CreateLevels";
+import CreationResult from "./Components/CreationResult";
 
 export default function App() {
   const [quizzesData, setQuizzes] = useState(null);
@@ -89,6 +90,16 @@ export default function App() {
                 levelsNewQuiz={levelsNewQuiz}
                 setLevels={setLevels}
                 nLevels={infoNewQuiz.nLevels}
+              />
+            }
+          />
+          <Route
+            path="/Quiz-Creation-Result"
+            element={
+              <CreationResult
+                infoNewQuiz={infoNewQuiz}
+                questionsNewQuiz={questionsNewQuiz}
+                levelsNewQuiz={levelsNewQuiz}
               />
             }
           />

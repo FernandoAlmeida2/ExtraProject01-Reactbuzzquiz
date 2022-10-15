@@ -3,15 +3,18 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 
 export default function QuizResult({ hitsPercentage, levels }) {
-  let levelIndex = -1;
+  let levelIndex = 0;
   const resultRef = useRef();
   setTimeout(
     () => resultRef.current.scrollIntoView({ behavior: "smooth" }),
     2000
   );
 
-  for (let i = 0; i < levels.length; i++) {
-    if (hitsPercentage >= Number(levels[i].minValue)) levelIndex = i;
+  for (let i = 1; i < levels.length; i++) {
+    if (hitsPercentage >= Number(levels[i].minValue)) {
+      if (Number(levels[i].minValue) > Number(levels[levelIndex].minValue))
+        levelIndex = i;
+    }
   }
   const levelReached = { ...levels[levelIndex] };
   return (
@@ -28,7 +31,7 @@ export default function QuizResult({ hitsPercentage, levels }) {
         </ResultContent>
       </ResultInfo>
       <button onClick={() => window.location.reload()}>Reiniciar Quiz</button>
-      <Link to="/" style={{ textDecoration: 'none' }} >
+      <Link to="/" style={{ textDecoration: "none" }}>
         <HomeButton>Voltar pra home</HomeButton>
       </Link>
     </ResultStyle>

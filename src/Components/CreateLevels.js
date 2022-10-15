@@ -15,8 +15,11 @@ export default function CreateLevels({
   
   function proceed(e) {
     e.preventDefault();
-    console.log(levelsNewQuiz)
-    //navigate("/Create-Quiz-Levels");
+    if(levelsNewQuiz.filter((level) => level.minValue === "0").length === 0){
+        alert("Pelo menos um nível deve ter % de acerto 0%");
+    } else{
+        navigate("/Quiz-Creation-Result");
+    }
   }
 
 

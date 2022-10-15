@@ -60,7 +60,7 @@ export default function CreateQuestionItem({
         <TextBox>Resposta correta</TextBox>
         <InputElement
           placeholder="Resposta correta"
-          minLength="20"
+          minLength="1"
           value={questionsNewQuiz[index].answers[0].text}
           name="text"
           onChange={(e) => handleForm(e, 0)}
@@ -85,7 +85,7 @@ export default function CreateQuestionItem({
         ></InputElement>
         <InputElement
           placeholder="URL da imagem 1"
-          minLength="1"
+          type="url"
           value={questionsNewQuiz[index].answers[1].image}
           name="image"
           onChange={(e) => handleForm(e, 1)}

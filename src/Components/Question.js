@@ -24,8 +24,8 @@ export default function Question({
     );
   }
   return (
-    <QuestionStyle>
-      <TitleStyle background={question.color} ref={questionRef}>
+    <QuestionStyle ref={questionRef}>
+      <TitleStyle background={question.color}>
         <h1>{question.title}</h1>
       </TitleStyle>
       <AnswersStyle>

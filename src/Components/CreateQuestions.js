@@ -14,7 +14,7 @@ export default function CreateQuestions({
 
   function cleanEmptyAnswers(){
     const newArray = [...questionsNewQuiz];
-    newArray.forEach((question, i) => {
+    newArray.forEach((question) => {
       let q2Empty = false;
       let q3Empty = false;
       if(question.answers[3].text === "" || question.answers[3].image === "")

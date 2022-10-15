@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 
 function isUserQuiz(id) {
   for (let i = 0; i < localStorage.length; i++) {
-    if (localStorage.getItem(localStorage.key(i)) === String(id)) return true;
+    if (localStorage.getItem(localStorage.key(i)) === id) return true;
   }
   return false;
 }
 
 export default function HomeScreen({ quizzesData }) {
-  const userQuizzes = quizzesData.filter((quiz) => isUserQuiz(quiz.id));
+  const userQuizzes = quizzesData.filter((quiz) => isUserQuiz(String(quiz.id)));
 
   return (
     <MainStyle>
@@ -27,7 +27,7 @@ export default function HomeScreen({ quizzesData }) {
       ) : (
         <QuizzesList quizzesArray={userQuizzes}>
           <h3>Seus Quizes</h3>
-          <Link to="/Create-Quiz-1">
+          <Link to="/Create-Quiz-Info">
             <ion-icon name="add-circle"></ion-icon>
           </Link>
         </QuizzesList>
