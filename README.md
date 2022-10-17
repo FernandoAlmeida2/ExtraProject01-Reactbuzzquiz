@@ -1,4 +1,4 @@
-# Off Project 01: BuzzQuiz [React]
+# Extra Project 01: BuzzQuiz [React]
 
 
 ## About The Project
@@ -9,4 +9,4 @@ This project is a platform to create quizzes, this time using **React**. It's a 
 
 ## Project Basic Structure
 
-<img align="left" width="50%" src="./public/img/BuzzQuizProject.drawio.png" alt="My project structure">  
+<img align="left" width="50%" src="./src/img/BuzzQuizProject.drawio.png" alt="My project structure">  
